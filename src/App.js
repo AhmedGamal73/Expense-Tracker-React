@@ -45,8 +45,8 @@ const App = () => {
   };
   return (
     <div>
-      <ExpenseFilter onChooseYear={selectYearHandler}/>
-      <NewExpense onAddNewExpense={addExpenseHandler}/>  <Expenses items={expenses} />
+      <NewExpense onAddNewExpense={addExpenseHandler}/>  
+      <Expenses items={expenses} />
     </div>
   );
 };

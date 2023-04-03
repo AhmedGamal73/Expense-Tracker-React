@@ -15,6 +15,20 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === selectedYear;
   });
 
+  // Initialize an variable that'll be displayed after selecting a year.
+  let expensesOutput= <p>There's no expenses this year.</p>
+
+  // Check if there's any previous expenses.
+  if (filteredExpenses.length > 0) {
+    expensesOutput = filteredExpenses.map(expenseItem => (
+          <ExpenseItem 
+          title={expenseItem.title}
+          amount={expenseItem.amount}
+          date={expenseItem.date}
+          /> 
+      ))
+  }
+
   return(
     <div>
       <Card className="expenses">
@@ -22,14 +36,8 @@ const Expenses = (props) => {
           selected={selectedYear}
           onChoosingYear={getSelectedYear}
         />
-        {filteredExpenses.map(expenseItem => (
-          <ExpenseItem 
-          title={expenseItem.title}
-          amount={expenseItem.amount}
-          date={expenseItem.date}
-          /> 
-        ))};
-      </Card > 
+        {expensesOutput}
+      </Card >
     </div>
    )
 };
